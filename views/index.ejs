@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<% include lib/head.ejs %>
+<body>
+<div class="units-container">
+    <br />
+    <div class="unit-centered unit-90 units-padding">
+
+        <nav class="navbar navbar-right">
+            <ul>
+                <li><a href="/settings" title="Настройки" data-theme="blue" data-tools="tooltip" class="fa fa-cog"></a></li>
+                <li><a href="/logout" title="Выход" data-theme="blue" data-tools="tooltip" class="fa fa-close"></a></li>
+            </ul>
+        </nav>
+
+        <div class="units-row ">
+            <h1>ohg</h1>
+        </div>
+
+        <div class="units-row ">
+            <div class="unit-33">
+                <h2>Step 1:</h2>
+                Add some sequences for analysis by specifying GenBank accessions numbers or/and by adding fasta files from your computer.
+                <br/><br/>
+                <form action="" class="forms">
+                    <div class="input-groups">
+                        <input type="text" name="go" placeholder="GenBank accession number" />
+                        <span class="btn-append">
+                            <button class="btn">Add</button>
+                        </span>
+                    </div>
+                </form>
+
+                <input type="file" name="file" data-tools="upload" data-url="/addfile">
+
+                <br/><br/>
+                <h3>Sequences to analyze:</h3>
+                <% if (typeof fileList !== 'undefined') { %>
+                <%= fileList.length %>
+                <% } %>
+
+                <% if (typeof text === 'undefined') text = 'main' %>
+                <%= text %>
+
+
+            </div>
+
+            <div class="unit-33">
+                <h2>Step 2:</h2>
+                Review the list of all sequences for analysis.
+                <br/><br/>
+            </div>
+
+            <div class="unit-33">
+                <h2>Step 3:</h2>
+                Choose reference sequence and you are ready to go!
+                <br/><br/>
+                <ul>
+                    <li>rCRS</li>
+                    <li>RSRS</li>
+                </ul>
+                <a href="#" class="btn btn-green">Analyze</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
