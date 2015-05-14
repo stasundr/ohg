@@ -37,8 +37,7 @@ app.use(multer({
 
         request.session.fileList.push(file.originalname);
         console.log( 'hello: ' + request.session.fileList);
-
-        //response.render('index', { text: 'sddsf', fileList: request.session.fileList });
+        response.json({upload: true});
 
     }
 }));
