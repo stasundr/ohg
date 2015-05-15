@@ -2,11 +2,11 @@
 
 var config = require('./config');
 var redis = require('./lib/redis');
+var sequence = require('./lib/sequence');
 
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
 var multer  = require('multer');
 var session = require('express-session');
 var redisStore = require('connect-redis')(session);
@@ -30,16 +30,19 @@ app.use(session({
 app.use(multer({
     dest: './uploads/',
     onFileUploadComplete: function (file, request, response) {
-        //console.log(file.fieldname + ' uploaded to  ' + file.path);
-        if (typeof request.session.fileList === 'undefined') {
-            request.session.fileList = [];
-        }
+        console.log(file.fieldname + ' uploaded to  ' + file.path);
 
-        request.session.fileList.push(file.originalname);
-        console.log( 'hello: ' + request.session.fileList);
-        response.json({upload: true});
+        sequence.process(file.path, file.name, function(listItem, actualFile) {
+            if (listItem) {
+                request.session.fileList.push(listItem);
+                request.session.filesToAnalyze.push(actualFile);
+            }
 
+            response.json({ upload: true });
+        });
     }
+
+    // validate file size
 }));
 
 require('./lib/routes')(app);

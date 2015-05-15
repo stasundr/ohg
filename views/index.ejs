@@ -8,8 +8,7 @@
 
         <nav class="navbar navbar-right">
             <ul>
-                <li><a href="/settings" title="Настройки" data-theme="blue" data-tools="tooltip" class="fa fa-cog"></a></li>
-                <li><a href="/logout" title="Выход" data-theme="blue" data-tools="tooltip" class="fa fa-close"></a></li>
+                <li><a href="/logout" title="Clear" data-theme="blue" data-tools="tooltip" class="fa fa-close"></a></li>
             </ul>
         </nav>
 
@@ -18,15 +17,15 @@
         </div>
 
         <div class="units-row ">
-            <div class="unit-33">
+            <div class="unit-30">
                 <h2>Step 1:</h2>
                 Add some sequences for analysis by specifying GenBank accessions numbers or/and by adding fasta files from your computer.
                 <br/><br/>
-                <form action="" class="forms">
+                <form method="post" action="/addurl" class="forms">
                     <div class="input-groups">
-                        <input type="text" name="go" placeholder="GenBank accession number" />
+                        <input type="text" name="url" placeholder="GenBank accession number" />
                         <span class="btn-append">
-                            <button class="btn">Add</button>
+                            <button class="btn btn-blue">Add</button>
                         </span>
                     </div>
                 </form>
@@ -34,25 +33,27 @@
                 <input type="file" name="file" data-tools="upload" data-url="/addfile">
             </div>
 
-            <div class="unit-33">
+            <div class="unit-40">
                 <h2>Step 2:</h2>
                 Review the list of all sequences for analysis.
                 <br/><br/>
+                <ul>
+                    <div id="sampleList"></div>
+                </ul>
             </div>
 
-            <div class="unit-33">
+            <div class="unit-30">
                 <h2>Step 3:</h2>
                 Choose reference sequence and you are ready to go!
                 <br/><br/>
-                <ul>
-                    <li>rCRS</li>
-                    <li>RSRS</li>
-                </ul>
-                <a href="#" class="btn btn-green">Analyze</a>
-
+                <input id="radio-1" type="radio" name="reference" value="RSRS" checked> <label for="radio-1">RSRS</label> <br/>
+                <input id="radio-2" type="radio" name="reference" value="rCRS"> <label for="radio-2">rCRS</label> <br/>
+                <br/>
+                <a href="#" class="btn btn-green" onclick="$.get('/analyze', {reference: $('input[name=\'reference\']:checked').val()});">Analyze</a>
             </div>
         </div>
     </div>
 </div>
+<script src="js/updateList.js"></script>
 </body>
 </html>
