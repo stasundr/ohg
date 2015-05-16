@@ -44,12 +44,15 @@
 
             <div class="unit-30">
                 <h2>Step 3:</h2>
-                Choose reference sequence and you are ready to go!
+                Choose reference sequence, enter e-mail for results and you are ready to go!
                 <br/><br/>
                 <input id="radio-1" type="radio" name="reference" value="RSRS" checked> <label for="radio-1">RSRS</label> <br/>
-                <input id="radio-2" type="radio" name="reference" value="rCRS"> <label for="radio-2">rCRS</label> <br/>
+                <input id="radio-2" type="radio" name="reference" value="rCRS"> <label for="radio-2">rCRS</label> <br/><br/>
+                <label>
+                    <input type="email" name="user-email" placeholder="Email" class="width-100" /> <br/>
+                </label>
                 <br/>
-                <a href="#" class="btn btn-green" onclick="$.get('/analyze', {reference: $('input[name=\'reference\']:checked').val()});">Analyze</a>
+                <a href="#" class="btn btn-green width-100" onclick="$.get('/analyze', {reference: $('input[name=\'reference\']:checked').val(), mail: $('input[name=\'user-email\']').val()});">Send results</a>
             </div>
         </div>
     </div>
