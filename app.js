@@ -18,7 +18,7 @@ app.set('view engine', 'ejs');
 
 //app.disable('etag'); // http://stackoverflow.com/questions/18811286/nodejs-express-cache-and-304-status-code
 
-app.use(morgan('dev'));
+//app.use(morgan('dev'));
 app.use(express.static(config.directory + '/public'));
 app.use(bodyParser.urlencoded( { extended: false } ));
 app.use(session({
