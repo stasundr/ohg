@@ -52,7 +52,7 @@
                     <input type="email" name="user-email" placeholder="Email" class="width-100" /> <br/>
                 </label>
                 <br/>
-                <a href="#" class="btn btn-green width-100" onclick="$.get('/analyze', {reference: $('input[name=\'reference\']:checked').val(), mail: $('input[name=\'user-email\']').val()});">Send results</a>
+                <a href="#" class="btn btn-green width-100" onclick="$.get('/analyze', {reference: $('input[name=\'reference\']:checked').val(), mail: $('input[name=\'user-email\']').val()}); alert('Your results will be ready soon! Watch your email!')">Send results</a>
             </div>
         </div>
     </div>

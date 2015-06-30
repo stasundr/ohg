@@ -2,6 +2,7 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$" libraries="{ohg node_modules}" />
-    <file url="file://$PROJECT_DIR$/lib/sequence.js" libraries="{Node.js v0.12.0 Core Modules}" />
+    <file url="file://$PROJECT_DIR$/app.js" libraries="{Node.js v0.12.2 Core Modules}" />
+    <file url="file://$PROJECT_DIR$/lib/sequence.js" libraries="{Node.js v0.12.2 Core Modules}" />
   </component>
 </project>
